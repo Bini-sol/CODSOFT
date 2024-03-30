@@ -1,10 +1,10 @@
 # Import necessary libraries
 import cv2
 import numpy as np
-import tensorflow as tf  # or import torch
+import tensorflow as tf
 
 # Load pre-trained face detection model
-face_detector = cv2.CascadeClassifier('C:/Users/Administrator/AppData/Local/Programs/Python/Python312/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml')  # or use deep learning model
+face_detector = cv2.CascadeClassifier('C:/Users/Administrator/AppData/Local/Programs/Python/Python312/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml') 
 
 # Load pre-trained face recognition model (if using)
 # recognition_model = load_recognition_model()
