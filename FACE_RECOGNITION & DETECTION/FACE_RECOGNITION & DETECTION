@@ -1,1 +1,53 @@
+import threading
+import cv2
+from deepface import DeepFace
 
+# Load pre-trained face detection model
+face_detector = cv2.CascadeClassifier('C:/Users/Administrator/AppData/Local/Programs/Python/Python312/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml')
+
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
+face_match = False
+reference_img = cv2.imread("OBAMA.jpg")
+
+def detect_faces(image):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    faces = face_detector.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+    return faces
+
+def check_face(frame):
+    global face_match
+    faces = detect_faces(frame)
+    try:
+        if len(faces) > 0:
+            face_match = DeepFace.verify(frame, reference_img.copy())['verified']
+        else:
+            face_match = False
+    except ValueError:
+        face_match = False
+
+while True:
+    ret, frame = cap.read()
+
+    if ret:
+        check_thread = threading.Thread(target=check_face, args=(frame.copy(),))
+        check_thread.start()
+        check_thread.join()
+
+        if face_match:
+            cv2.putText(frame, "BINI SOL 97% MATCH!", (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        else:
+            cv2.putText(frame, "NO MATCH!", (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+
+        for (x, y, w, h) in detect_faces(frame):
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+        cv2.imshow("video", frame)
+
+    key = cv2.waitKey(1)
+    if key == ord("q"):
+        break
+
+cv2.destroyAllWindows()
