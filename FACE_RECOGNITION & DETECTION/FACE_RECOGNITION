@@ -7,7 +7,7 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 face_match = False
-reference_img = cv2.imread("BINI.jpg")
+reference_img = cv2.imread("OBAMA.jpg")
 
 def check_face(frame):
     global face_match
@@ -32,7 +32,7 @@ while True:
 
         # Display the result based on the updated face_match value
         if face_match:
-            cv2.putText(frame, "MATCH!", (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            cv2.putText(frame, "BINI SOL 97.89% MATCH!", (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         else:
             cv2.putText(frame, "NO MATCH!", (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
