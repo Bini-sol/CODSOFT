@@ -1,0 +1,50 @@
+1. Hello!
+2. Hi there!
+3. Hey!
+4. Howdy!
+5. Hola!
+6. Goodbye!
+7. Bye!
+8. See you later!
+9. Farewell!
+10. Thanks!
+11. Thank you!
+12. Who are you?
+13. What are you?
+14. What can you do?
+15. Tell me about yourself.
+16. What about me?
+17. Tell me about me.
+18. How old are you?
+19. What's your age?
+20. Who created you?
+21. Who made you?
+22. What's your purpose?
+23. Why do you exist?
+24. What's the weather like?
+25. How's the weather today?
+26. Weather forecast?
+27. Tell me a joke.
+28. Say something funny.
+29. Can you help me?
+30. What is your favorite color?
+31. Do you like pizza?
+32. How are you?
+33. Are you human?
+34. Do you sleep?
+35. What do you eat?
+36. Are you a robot?
+37. What is the meaning of life?
+38. What's your favorite movie?
+39. Can you sing?
+40. Do you have any siblings?
+41. What's your favorite book?
+42. Do you dream?
+43. Are you intelligent?
+44. Can you dance?
+45. Where do you live?
+46. Do you have any pets?
+47. What's your favorite food?
+48. Can you think?
+49. Are you a boy or a girl?
+50. What's your favorite song?
