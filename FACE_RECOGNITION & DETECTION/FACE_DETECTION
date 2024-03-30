@@ -1,1 +1,61 @@
+# Import necessary libraries
+import cv2
+import numpy as np
+import tensorflow as tf  # or import torch
 
+# Load pre-trained face detection model
+face_detector = cv2.CascadeClassifier('C:/Users/Administrator/AppData/Local/Programs/Python/Python312/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml')  # or use deep learning model
+
+# Load pre-trained face recognition model (if using)
+# recognition_model = load_recognition_model()
+
+# Function for face detection
+def detect_faces(image):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    faces = face_detector.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+    return faces
+
+# Function for face recognition (if using)
+# def recognize_faces(faces, image):
+#     for (x, y, w, h) in faces:
+#         face = image[y:y+h, x:x+w]
+#         # Use recognition model to recognize the face
+#         # Recognized_name = recognition_model.recognize(face)
+#         # Draw rectangle and label on the face
+#         # cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
+#         # cv2.putText(image, Recognized_name, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+#     return image
+
+# Main function
+def main():
+    # Read input image or video
+    # cap = cv2.VideoCapture('path/to/video')  # Uncomment if working with video
+    # while cap.isOpened():  # Uncomment if working with video
+    #     ret, frame = cap.read()  # Uncomment if working with video
+    #image = cv2.imread('C:/Users/Administrator/Downloads/HOTGIRL1.JPG')  # Uncomment if working with image
+    #image = cv2.imread('C:/Users/Administrator/Downloads/HOTGIRL2.JPG')  # Uncomment if working with image
+    #image = cv2.imread('C:/Users/Administrator/Downloads/HOTGIRL3.JPG')  # Uncomment if working with image
+    #image = cv2.imread('C:/Users/Administrator/Downloads/HOTGIRL4.JPG')  # Uncomment if working with image
+    #image = cv2.imread('C:/Users/Administrator/Downloads/BINI.JPG')  # Uncomment if working with image
+    image = cv2.imread('C:/Users/Administrator/Downloads/OBAMA.jfif')  # Uncomment if working with image
+
+    # Detect faces
+    faces = detect_faces(image)
+
+    # Recognize faces (if using)
+    # image_with_faces = recognize_faces(faces, image)
+
+    # Draw rectangles around detected faces
+    for (x, y, w, h) in faces:
+        cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+    # Display the result
+    cv2.imshow('Face Detection', image)
+    cv2.waitKey(0)
+
+    # Close video capture (if using)
+    # cap.release()  # Uncomment if working with video
+    cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
